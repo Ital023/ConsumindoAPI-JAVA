@@ -7,16 +7,13 @@ import java.util.Scanner;
 
 public class principal {
     public static void main(String[] args) throws IOException, InterruptedException {
-        String apiKey = "57b012a6";
         Scanner sc = new Scanner(System.in);
-
+        Api apiUser = new Api("57b012a6");
         System.out.print("Insira o nome do filme: ");
         String filme = sc.nextLine();
 
-        String endereco = "http://www.omdbapi.com/?t="+filme+"&apikey="+apiKey;
-
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endereco)).build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUser.gerandoApiRequest(filme))).build();
 
         HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
 
