@@ -5,6 +5,6 @@ public class Api {
         this.apiKey = apiKey;
     }
     public String gerandoApiRequest(String filme){
-        return "http://www.omdbapi.com/?t="+filme+"&apikey="+apiKey;
+        return "http://www.omdbapi.com/?t="+filme.replace(" ","+")+"&apikey="+apiKey;
     }
 }
