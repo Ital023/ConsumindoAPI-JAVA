@@ -12,12 +12,12 @@ import java.util.Scanner;
 public class principal {
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
-        Api apiUser = new Api("57b012a6");
+        ApiOmdb apiOmdbUser = new ApiOmdb("57b012a6");
         System.out.print("Insira o nome do filme: ");
         String filme = sc.nextLine();
 
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUser.gerandoApiRequest(filme))).build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiOmdbUser.gerandoApiRequest(filme))).build();
 
         HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
 
